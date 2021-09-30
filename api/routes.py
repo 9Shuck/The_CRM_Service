@@ -1,6 +1,7 @@
 from flask import Blueprint, json, jsonify, request
 from sqlalchemy import exc
 from api.models import User, Customer
+from werkzeug.security import check_password_hash, generate_password_hash
 
 api = Blueprint('api', __name__)
 
@@ -11,9 +12,9 @@ def user_register():
     password = request.json.get('password', None)
 
     user = User(
-        is_admin=is_admin,
-        email=email,
-        password=password
+        is_admin = is_admin,
+        email = email,
+        password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=16)
     )
 
     try: 
@@ -21,6 +22,18 @@ def user_register():
         return jsonify(user.serialize()), 201
     except exc.IntegrityError:
         return {'error':'Something is wrong'}, 409
+
+@api.route('/login', methods=['POST'])
+def user_login():
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
+
+    if not (email and password):
+        return {'error': 'Missing information'}, 401
+    user = User.get_by_email(email)
+    if user and user.password == password:
+        return {'message':'login works'}, 200
+    return {'message': 'email or password incorrects'}, 401
 
 @api.route('/user', methods=['GET'])
 def get_all_users():
