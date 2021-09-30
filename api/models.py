@@ -43,6 +43,11 @@ class User(db.Model):
     def get_by_email(cls, email):
         user = cls.query.filter_by(email=email).one_or_none()
         return user
+    
+    @classmethod
+    def get_by_id(cls, id):
+        user = cls.query.get(id)
+        return user
 
 class Customer(db.Model):
 
@@ -63,10 +68,20 @@ class Customer(db.Model):
             "id": self.id,
             "name": self.name,
             "surname": self.surname,
-            "photo_url": self.photo_url
+            "photo_url": self.photo_url,
+            "user_id": self.user_id
         }
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
 
     @classmethod
     def get_all(cls):
         get_all = cls.query.all()
         return get_all    
+    
+    @classmethod
+    def get_by_id(cls, id):
+        user = cls.query.get(id)
+        return user

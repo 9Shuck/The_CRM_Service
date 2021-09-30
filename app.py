@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-# from flask_migrate import Migrate
+
+from flask_jwt_extended import JWTManager
 
 from api.models import db
 from api.routes import api
@@ -13,6 +14,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite3')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+app.config["JWT_SECRET_KEY"] = "agile-monkeys-crm"
+jwt = JWTManager(app)
 # Init db
 # db = SQLAlchemy(app)
 db.init_app(app)
