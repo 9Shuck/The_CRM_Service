@@ -8,6 +8,9 @@ class Errors:
     def not_admin():
         return {'error':'You are not an admin'}, 401
 
+    def not_auth():
+        return {'error':'You are not authorized'}, 401
+
     def missing_information():
         return {'error': 'missing information'}, 401
 
