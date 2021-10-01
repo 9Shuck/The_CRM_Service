@@ -12,7 +12,7 @@ class Errors:
         return {'error':'You are not authorized'}, 401
 
     def missing_information():
-        return {'error': 'missing information'}, 401
+        return {'error': 'missing information'}, 400
 
     def email_not_valid():
         return {'error':'email not valid'}, 400
@@ -33,5 +33,5 @@ class Errors:
         return {'error':'You need to login'}, 401
 
     def email_password():
-        return {'error':'email or password are incorrects'}, 401
+        return {'error':'email or password are incorrects'}, 400
 
