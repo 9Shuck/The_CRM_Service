@@ -12,8 +12,8 @@ class Validations:
         return admin.is_admin
 
     def is_active(id):
-        admin = User.get_by_id(id)
-        return admin.is_active
+        user = User.get_by_id(id)
+        return user.is_active
 
     def is_customer_active(id):
         customer = Customer.get_by_id(id)
