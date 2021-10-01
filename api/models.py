@@ -21,17 +21,22 @@ class User(db.Model):
     password = db.Column(db.String(20), nullable=False)
 
     def __repr__(self):
-        return f'User {self.id}, {self.email}, {self.is_active}'
+        return f'User {self.id}, {self.email}'
     
     def serialize(self):
         return {
             "id": self.id,
+            "is_active": self.is_active,
             "is_admin": self.is_admin,
             "email": self.email,
         }
 
     def create(self):
         db.session.add(self)
+        db.session.commit()
+    
+    def disable_user(self):
+        self.is_active = False
         db.session.commit()
 
     @classmethod
@@ -49,14 +54,21 @@ class User(db.Model):
         user = cls.query.get(id)
         return user
 
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+        db.session.commit()
+        return self
+
 class Customer(db.Model):
 
     __tablename__ = 'customer'
 
     id = db.Column(db.Integer, primary_key=True)
+    is_active = db.Column(db.Boolean, default=True)
     name = db.Column(db.String, nullable=False)
     surname = db.Column(db.String, nullable=False)
-    photo_url = db.Column(db.String, nullable=False)
+    photo_url = db.Column(db.String, nullable=False, default="https://via.placeholder.com/150")
 
     user_id = db.Column(db.Integer, ForeignKey('user.id'))
 
@@ -69,11 +81,16 @@ class Customer(db.Model):
             "name": self.name,
             "surname": self.surname,
             "photo_url": self.photo_url,
-            "user_id": self.user_id
+            "user_id": self.user_id,
+            "is_active": self.is_active
         }
 
     def create(self):
         db.session.add(self)
+        db.session.commit()
+
+    def disable_user(self):
+        self.is_active = False
         db.session.commit()
 
     @classmethod
@@ -85,3 +102,9 @@ class Customer(db.Model):
     def get_by_id(cls, id):
         user = cls.query.get(id)
         return user
+
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+        db.session.commit()
+        return self
