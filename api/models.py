@@ -26,12 +26,17 @@ class User(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "is_active": self.is_active,
             "is_admin": self.is_admin,
             "email": self.email,
         }
 
     def create(self):
         db.session.add(self)
+        db.session.commit()
+    
+    def disable_user(self):
+        self.is_active = False
         db.session.commit()
 
     @classmethod
