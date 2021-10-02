@@ -5,7 +5,6 @@ from api.validations import Validations
 from api.errors import Errors
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
-import jwt
 from datetime import timedelta
 
 api = Blueprint('api', __name__)

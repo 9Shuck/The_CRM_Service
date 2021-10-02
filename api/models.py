@@ -1,13 +1,38 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey, Table
 from sqlalchemy.sql.schema import Column
-from werkzeug.security import check_password_hash
 
 db = SQLAlchemy()
 
 class BaseModel:
+
     def create(self):
         db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_all(cls):
+        get_all = cls.query.all()
+        return get_all
+
+    @classmethod
+    def get_by_id(cls, id):
+        user = cls.query.get(id)
+        return user
+    
+    @classmethod
+    def get_by_email(cls, email):
+        user = cls.query.filter_by(email=email).one_or_none()
+        return user
+
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+        db.session.commit()
+        return self
+    
+    def disable_user(self):
+        self.is_active = False
         db.session.commit()
 
 modifications = Table("modifications", db.Model.metadata,
@@ -36,32 +61,7 @@ class User(db.Model, BaseModel):
             "email": self.email,
         }
 
-    def disable_user(self):
-        self.is_active = False
-        db.session.commit()
-
-    @classmethod
-    def get_all(cls):
-        get_all = cls.query.all()
-        return get_all
-
-    @classmethod
-    def get_by_email(cls, email):
-        user = cls.query.filter_by(email=email).one_or_none()
-        return user
-    
-    @classmethod
-    def get_by_id(cls, id):
-        user = cls.query.get(id)
-        return user
-
-    def update(self, **kwargs):
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-        db.session.commit()
-        return self
-
-class Customer(db.Model):
+class Customer(db.Model, BaseModel):
 
     __tablename__ = 'customer'
 
@@ -86,26 +86,5 @@ class Customer(db.Model):
             "is_active": self.is_active
         }
 
-    def create(self):
-        db.session.add(self)
-        db.session.commit()
 
-    def disable_user(self):
-        self.is_active = False
-        db.session.commit()
-
-    @classmethod
-    def get_all(cls):
-        get_all = cls.query.all()
-        return get_all    
     
-    @classmethod
-    def get_by_id(cls, id):
-        user = cls.query.get(id)
-        return user
-
-    def update(self, **kwargs):
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-        db.session.commit()
-        return self
