@@ -1,6 +1,5 @@
-from flask import Blueprint, json, jsonify, request
+from flask import Blueprint, jsonify, request
 from sqlalchemy import exc
-from sqlalchemy.sql.expression import except_
 from api.models import db, User, Customer, modifications
 from api.validations import Validations
 from api.errors import Errors

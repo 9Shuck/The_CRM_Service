@@ -1,5 +1,4 @@
 from api.models import User, Customer
-from flask_jwt_extended import get_jwt_identity
 import re
 
 regex_email = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'  

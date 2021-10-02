@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "fd56745339acd01b5ccd788809d1b57c13fe380e1443b921f8b6dd039e887f73"
+            "sha256": "d7b79b5ba7b549d09778cf64fa6d1189b694452f041b54ea1417d6031c85da0c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,13 +32,13 @@
             "index": "pypi",
             "version": "==2.0.1"
         },
-        "flask-marshmallow": {
+        "flask-jwt-extended": {
             "hashes": [
-                "sha256:2adcd782b5a4a6c5ae3c96701f320d8ca6997995a52b2661093c56cc3ed24754",
-                "sha256:bd01a6372cbe50e36f205cfff0fc5dab0b7b662c4c8b2c4fc06a3151b2950950"
+                "sha256:6e2b40d548b9dfc6051740c4552c097ac38e514e500c16c682d9a533d17ca418",
+                "sha256:80d06d3893089824659c26d0cb261999a12f425a66f09c3685f993065bc47b3a"
             ],
             "index": "pypi",
-            "version": "==0.14.0"
+            "version": "==4.3.0"
         },
         "flask-sqlalchemy": {
             "hashes": [
@@ -124,29 +124,13 @@
             "markers": "python_version >= '3.6'",
             "version": "==2.0.1"
         },
-        "marshmallow": {
+        "pyjwt": {
             "hashes": [
-                "sha256:c67929438fd73a2be92128caa0325b1b5ed8b626d91a094d2f7f2771bf1f1c0e",
-                "sha256:dd4724335d3c2b870b641ffe4a2f8728a1380cd2e7e2312756715ffeaa82b842"
+                "sha256:934d73fbba91b0483d3857d1aff50e96b2a892384ee2c17417ed3203f173fca1",
+                "sha256:fba44e7898bbca160a2b2b501f492824fc8382485d3a6f11ba5d0c1937ce6130"
             ],
-            "markers": "python_version >= '3.5'",
-            "version": "==3.13.0"
-        },
-        "marshmallow-sqlalchemy": {
-            "hashes": [
-                "sha256:ba7493eeb8669a3bf00d8f906b657feaa87a740ae9e4ecf829cfd6ddf763d276",
-                "sha256:d8525f74de51554b5c8491effe036f60629a426229befa33ff614c8569a16a73"
-            ],
-            "index": "pypi",
-            "version": "==0.26.1"
-        },
-        "six": {
-            "hashes": [
-                "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
-                "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"
-            ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
-            "version": "==1.16.0"
+            "markers": "python_version >= '3.6'",
+            "version": "==2.1.0"
         },
         "sqlalchemy": {
             "hashes": [
