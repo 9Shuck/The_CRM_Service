@@ -7,21 +7,49 @@ The objective is to create a REST API to manage customer data for a small shop. 
 
 ### ▶️ Run the project: 
 
-This project works with python version 3.9.7 or superior.
+This project works with these minimum versions: <br>
+Python version 3.9 <br> 
+Flask 2.0 <br>
+Flask-SQLAlchemy 2.5 <br> 
+Flask-JWT-extended 4.3.0 <br>
+
+Clone this repository:
+```
+git clone https://github.com/9Shuck/the_crm_service.git
+```
+Go inside the environment:
+```
+pipenv shell
+```
+Run the application:
+```
+python3 app.py
+```
+Login with this credentials to access the API:
 
 ```
+email: admin@crm.com
+password: 123456aB
+```
+<hr>
 
-```
-```
+### 📡 Endpoints:
 
-```
-```
+<h4>Access for every user:</h4>
+POST /login
 
-```
+<h4>Access just for admin user:</h4>
+POST /user <br>
+GET /user <br>
+PATCH /user/id <br>
+DELETE /user/id <br>
 
-```
-
-```
+<h4>Access just for admin user or no admin user who created the customer:</h4>
+POST /customer <br>
+GET /customer <br>
+GET /customer/id <br>
+PATCH /customer/id <br>
+DELETE /customer/id <br>
 
 <hr>
 
