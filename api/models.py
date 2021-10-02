@@ -5,12 +5,17 @@ from werkzeug.security import check_password_hash
 
 db = SQLAlchemy()
 
+class BaseModel:
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+
 modifications = Table("modifications", db.Model.metadata,
     Column("user_id", ForeignKey("user.id"), primary_key=True),
     Column("customer_id", ForeignKey("customer.id"), primary_key=True)
 )
 
-class User(db.Model):
+class User(db.Model, BaseModel):
 
     __tablename__ = 'user'
 
@@ -31,10 +36,6 @@ class User(db.Model):
             "email": self.email,
         }
 
-    def create(self):
-        db.session.add(self)
-        db.session.commit()
-    
     def disable_user(self):
         self.is_active = False
         db.session.commit()
