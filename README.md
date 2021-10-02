@@ -17,6 +17,10 @@ Clone this repository:
 ```
 git clone https://github.com/9Shuck/the_crm_service.git
 ```
+Install the environment:
+```
+pipenv install
+```
 Go inside the environment:
 ```
 pipenv shell

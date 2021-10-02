@@ -233,21 +233,7 @@ def delete_customer(id):
    
 
 
-@api.route('/registerno', methods=['POST'])
-def user_register_no():
-    email = request.json.get('email', None)
-    password = request.json.get('password', None)
 
-    user = User(
-        email = email,
-        is_admin = True,
-        password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=16)
-    )
-    try: 
-        user.create()
-        return jsonify(user.serialize()), 201
-    except exc.IntegrityError:
-        return Errors.email_already_registered()
 
 
 
