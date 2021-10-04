@@ -1,4 +1,6 @@
 __pycache__/
 api/__pycache__/
+tests/__pycache__/
 Pipfile.lock
 .DS_Store
+.vscode/

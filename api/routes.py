@@ -157,7 +157,7 @@ def post_customer():
 @jwt_required()
 def get_all_customers():
 
-    all_customers = Customer.get_all()
+    all_customers = Customer.get_all_active()
 
     if all_customers:
         return jsonify([customer.serialize() for customer in all_customers])
