@@ -2,7 +2,30 @@
 
 ### 📜 Description: 
 
-The objective is to create a REST API to manage customer data for a small shop. It will work as the backend side for a CRM interface that is being developed by a different team.
+The objective is to create a REST API to manage customer data for a small shop. It will work as the backend side for a CRM interface that is being developed by a different team. <br>
+<br>
+The API should be only accessible by a registered user by providing an authentication mechanism.
+
+Login with these credentials to access the API for the first time:
+```
+email: admin@crm.com
+password: 123456aB
+```
+A User (no Admin) can: <br>
+  ▸ Create a new customer (with name, surname and photo). <br>
+  ▸ List all customers. <br>
+  ▸ Get full customer information. <br>
+  ▸ Update an existing customer. <br>
+  ▸ Delete an existing customer (soft delete). <br>
+  <br>
+ An Admin User can do the previous actions and manage users: <br>
+  ▸ Create users. <br>
+  ▸ List users. <br>
+  ▸ Update users. <br>
+  ▸ Delete users. <br>
+  ▸ Change admin status. <br>
+  <br>
+  Every time a customer is modified by a user, the relationship between them is stored in an association table called 'modifications'.
 <hr>
 
 ### ▶️ Run the project: 
