@@ -16,6 +16,11 @@ class BaseModel:
         return get_all
 
     @classmethod
+    def get_all_active(cls):
+        get_all_active = cls.query.filter_by(is_active=True)
+        return get_all_active
+
+    @classmethod
     def get_by_id(cls, id):
         user = cls.query.get(id)
         return user
