@@ -216,7 +216,7 @@ def update_customer(id):
     
     try:
         modification = modifications.insert().values(user_id=get_jwt_identity(), 
-                                                    customer_id=customer.id)
+                                                     customer_id=customer.id)
         db.session.execute(modification)
         db.session.commit()
     except exc.IntegrityError:
