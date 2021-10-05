@@ -20,10 +20,14 @@ def user_login():
 
     user = User.get_by_email(email)
 
-    if not (user and check_password_hash(user.password, password) and user.is_active):
+    if not (user 
+            and check_password_hash(user.password, password) 
+            and user.is_active):
         return Errors.email_password()
 
-    token = create_access_token(identity=user.id, expires_delta=timedelta(hours=24))
+    token = create_access_token(identity=user.id, 
+                                expires_delta=timedelta(hours=24))
+
     return {'token': token}, 200
 
 
@@ -45,7 +49,9 @@ def user_register():
         
     user = User(
         email = email,
-        password = generate_password_hash(password, method='pbkdf2:sha256', salt_length=16)
+        password = generate_password_hash(password, 
+                                          method='pbkdf2:sha256', 
+                                          salt_length=16)
     )
 
     try: 
@@ -88,8 +94,9 @@ def update_user(id):
     if not (Validations.password(update_user['password'])):
         return Errors.password_not_valid()
 
-    password = generate_password_hash(
-        update_user["password"], method='pbkdf2:sha256', salt_length=16)
+    password = generate_password_hash(update_user["password"], 
+                                      method='pbkdf2:sha256', salt_length=16)
+                                      
     update_user["password"] = password
 
     user = User.get_by_id(id)
@@ -181,7 +188,8 @@ def get_customer(id):
 @jwt_required()
 def update_customer(id):
 
-    if not (Validations.is_admin(get_jwt_identity()) or Validations.customer_user(id, get_jwt_identity())):
+    if not (Validations.is_admin(get_jwt_identity()) 
+            or Validations.customer_user(id, get_jwt_identity())):
         return Errors.not_auth()
 
     update_customer = {
@@ -207,7 +215,8 @@ def update_customer(id):
                     })
     
     try:
-        modification = modifications.insert().values(user_id=get_jwt_identity(), customer_id=customer.id)
+        modification = modifications.insert().values(user_id=get_jwt_identity(), 
+                                                    customer_id=customer.id)
         db.session.execute(modification)
         db.session.commit()
     except exc.IntegrityError:
@@ -222,7 +231,8 @@ def delete_customer(id):
     if not Validations.is_customer_active(id):
         return Errors.customer_not_found()
 
-    if not (Validations.is_admin(get_jwt_identity()) or Validations.customer_user(id, get_jwt_identity())):
+    if not (Validations.is_admin(get_jwt_identity()) 
+            or Validations.customer_user(id, get_jwt_identity())):
         return Errors.not_admin()
     
     customer = Customer.get_by_id(id)
