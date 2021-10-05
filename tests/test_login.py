@@ -4,6 +4,7 @@ import requests
 data_admin = {'email': 'admin@crm.com', 'password': '123456aB'}
 data_user = {'email': 'test@test.com', 'password': '123456aB'}
 data_customer = {'name': 'Testing', 'surname' : 'Testing'}
+customer_update = {'name': 'Update', 'surname' : 'Update'}
 
 def get_token():
     r = requests.post("http://127.0.0.1:5000/login", json = data_admin)
@@ -32,15 +33,17 @@ class ApiTest(unittest.TestCase):
         r = requests.post(ApiTest.CUSTOMER_URL, json = data_customer, headers = header)
         self.assertEqual(r.status_code, 201)
 
-    # def test_4_delete_customer(self):
-    #     r = requests.delete(ApiTest.CUSTOMER_URL + '/' + (str(id)), headers = header)
-    #     print(r.json())
-    #     self.assertEqual(r.status_codes, 200)
-
-    def test_5_get_all_customers(self):
+    def test_4_get_all_customers(self):
         r = requests.get(ApiTest.CUSTOMER_URL, headers = header)
         self.assertEqual(r.status_code, 200)
 
+    def test_5_get_customer_id(self):
+        r = requests.get(ApiTest.CUSTOMER_URL + '/1', headers = header)
+        self.assertEqual(r.status_code, 200)
+
+    def test_6_patch_customer_id(self):
+        r = requests.patch(ApiTest.CUSTOMER_URL + '/1', json = customer_update, headers = header)
+        self.assertEqual(r.status_code, 200)
 
         
 if __name__ == '__main__':
