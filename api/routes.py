@@ -159,11 +159,13 @@ def get_all_customers():
 
     all_customers = Customer.get_all_active()
 
-    if all_customers:
-        return jsonify([customer.serialize() for customer in all_customers])
-    return Errors.customer_not_found()
+    customer_serialization = [customer.serialize() for customer in all_customers]
 
+    if not len(customer_serialization) > 0:
+        return Errors.customer_not_found()
+    return jsonify(customer_serialization)
 
+     
 @api.route('/customer/<int:id>', methods=['GET'])
 @jwt_required()
 def get_customer(id):
