@@ -4,13 +4,8 @@
 
 The objective is to create a REST API to manage customer data for a small shop. It will work as the backend side for a CRM interface that is being developed by a different team. <br>
 <br>
-The API should be only accessible by a registered user by providing an authentication mechanism.
+The API should be only accessible by a registered user by providing an authentication mechanism. <br>
 
-Login with these credentials to access the API for the first time:
-```
-email: admin@crm.com
-password: 123456aB
-```
 A User (no Admin) can: <br>
   ▸ Create a new customer (with name, surname and photo). <br>
   ▸ List all customers. <br>
@@ -28,7 +23,7 @@ A User (no Admin) can: <br>
   Every time a customer is modified by a user, the relationship between them is stored in an association table called 'modifications'.
 <hr>
 
-### ▶️ Run the project: 
+### ▶️ Run the project (Local): 
 
 This project works with these minimum versions: <br>
 Python version 3.9 <br> 
@@ -44,44 +39,72 @@ Go inside the directory if you are not in:
 ```
 cd the_crm_service
 ```
-Install the environment:
+Run the app:
 ```
-pipenv install
+flask run
 ```
-Go inside the environment:
-```
-pipenv shell
-```
-Run the application:
-```
-python3 app.py
-```
+
 Login with this credentials to access the API:
 
 ```
 email: admin@crm.com
 password: 123456aB
 ```
+### ▶️ Run the project (Deployment): 
+
+This project is deployed the Heroku: <br>
+https://the-crm-service.herokuapp.com/
+
 <hr>
 
-### 📡 Endpoints:
+### 📡 Endpoints Access:
+
+The API can be accessed with Postman/Insomnia. <br>
+If the project is running locally: {URL} = http://127.0.0.1:5000 <br>
+If the project is running in the deployment: {URL} = https://the-crm-service.herokuapp.com <br>
 
 <h4>Access for every user:</h4>
-POST /login
+POST: {URL} /login
 
 <h4>Access just for admin user:</h4>
-POST /user <br>
-GET /user <br>
-PATCH /user/id <br>
-DELETE /user/id <br>
+POST: {URL} /user <br>
+GET: {URL} /user <br>
+PATCH: {URL} /user/id <br>
+DELETE: {URL} /user/id <br>
 
 <h4>Access just for admin user or no admin user who created the customer:</h4>
-POST /customer <br>
-GET /customer <br>
-GET /customer/id <br>
-PATCH /customer/id <br>
-DELETE /customer/id <br>
+POST: {URL} /customer <br>
+GET: {URL} /customer <br>
+GET: {URL} /customer/id <br>
+PATCH: {URL} /customer/id <br>
+DELETE: {URL} /customer/id <br>
 
+<hr>
+
+### 🎞 Example:
+<hr>
+
+### 🧪 Run Tests:
+
+Go inside the directory if you are not in:
+```
+cd the_crm_service
+```
+Run the flask app:
+```
+flask run
+```
+Run the tests:
+```
+python3 tests/test_login.py
+```
+If all test are correct, this example message should be shown:
+```
+----------------------------------------------------------------------
+Ran 6 tests in 0.064s
+
+OK
+```
 <hr>
 
 ### 🧩 UML Diagram:
