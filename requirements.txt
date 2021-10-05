@@ -33,4 +33,3 @@ SQLAlchemy==1.4.25
 toml==0.10.2
 urllib3==1.26.7
 Werkzeug==2.0.1
-uwsgi
