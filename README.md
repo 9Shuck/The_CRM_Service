@@ -4,13 +4,8 @@
 
 The objective is to create a REST API to manage customer data for a small shop. It will work as the backend side for a CRM interface that is being developed by a different team. <br>
 <br>
-The API should be only accessible by a registered user by providing an authentication mechanism.
+The API should be only accessible by a registered user by providing an authentication mechanism. <br>
 
-Login with these credentials to access the API for the first time:
-```
-email: admin@crm.com
-password: 123456aB
-```
 A User (no Admin) can: <br>
   ▸ Create a new customer (with name, surname and photo). <br>
   ▸ List all customers. <br>
@@ -28,7 +23,7 @@ A User (no Admin) can: <br>
   Every time a customer is modified by a user, the relationship between them is stored in an association table called 'modifications'.
 <hr>
 
-### ▶️ Run the project: 
+### ▶️ Run the project (Local): 
 
 This project works with these minimum versions: <br>
 Python version 3.9 <br> 
@@ -44,44 +39,92 @@ Go inside the directory if you are not in:
 ```
 cd the_crm_service
 ```
-Install the environment:
+Run the app:
 ```
-pipenv install
+flask run
 ```
-Go inside the environment:
-```
-pipenv shell
-```
-Run the application:
-```
-python3 app.py
-```
+
 Login with this credentials to access the API:
 
 ```
 email: admin@crm.com
 password: 123456aB
 ```
+### ▶️ Run the project (Deployment): 
+
+This project is deployed the Heroku: <br>
+https://the-crm-service.herokuapp.com/
+
 <hr>
 
-### 📡 Endpoints:
+### 📡 Endpoints Access:
+
+The API can be accessed with Postman/Insomnia. <br>
+If the project is running locally: {URL} = http://127.0.0.1:5000 <br>
+If the project is running in the deployment: {URL} = https://the-crm-service.herokuapp.com <br>
 
 <h4>Access for every user:</h4>
-POST /login
+POST: {URL} /login
 
 <h4>Access just for admin user:</h4>
-POST /user <br>
-GET /user <br>
-PATCH /user/id <br>
-DELETE /user/id <br>
+POST: {URL} /user <br>
+GET: {URL} /user <br>
+PATCH: {URL} /user/id <br>
+DELETE: {URL} /user/id <br>
 
 <h4>Access just for admin user or no admin user who created the customer:</h4>
-POST /customer <br>
-GET /customer <br>
-GET /customer/id <br>
-PATCH /customer/id <br>
-DELETE /customer/id <br>
+POST: {URL} /customer <br>
+GET: {URL} /customer <br>
+GET: {URL} /customer/id <br>
+PATCH: {URL} /customer/id <br>
+DELETE: {URL} /customer/id <br>
 
+<hr>
+
+### 🎞 Example with Insomnia:
+1-Login with the credentials and copy the Bearer Token:<br><br>
+<img height="300" width="400" src="https://imgur.com/VVNlzCP.png"/> <br>
+
+2-Paste the Bearer Token: <br><br>
+<img height="300" width="400" src="https://imgur.com/P61G9o1.png"/>
+
+3-Create a User (All users created aren't admins): <br><br>
+<img height="300" width="400" src="https://imgur.com/0PAEbXX.png"/>
+
+4-Get a List of all Users (Non active users are listed): <br><br>
+<img height="300" width="400" src="https://imgur.com/jBIdPZV.png"/>
+
+5-Modify a User (Can modify each field separetely even change Admin status): <br><br>
+<img height="300" width="400" src="https://imgur.com/mdyZvPY.png"/>
+
+6-Delete a User (Soft Delete):<br><br>
+<img height="300" width="400" src="https://imgur.com/gJRYN6P.png"/>
+
+### Customer endpoints works the same way except that can be managed with non-admin users.
+
+<hr>
+
+### 🧪 Run Tests:
+
+Go inside the directory if you are not in:
+```
+cd the_crm_service
+```
+Run the flask app:
+```
+flask run
+```
+Run the tests:
+```
+python3 tests/test_login.py
+```
+If all test are correct, this example message should be shown:
+```
+----------------------------------------------------------------------
+Ran 6 tests in 0.064s
+
+OK
+```
 <hr>
 
 ### 🧩 UML Diagram:
@@ -94,6 +137,8 @@ DELETE /customer/id <br>
 
 <p align="left"> <a href="https://flask.palletsprojects.com/" target="_blank"> 
 <a href="https://www.python.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> 
-<img src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-icon.svg" alt="flask" width="40" height="40"/> </a>
-<a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> 
+<a href="https://www.sqlalchemy.org/" target="_blank"> <img src="https://quintagroup.com/cms/python/images/sqlalchemy-logo.png" alt="python" width="100" height="40"/> </a> 
+<a href="https://palletsprojects.com/p/flask/" target="_blank"><img src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-icon.svg" alt="flask" width="40" height="40"/> </a>
+<a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a>
+<a href="https://www.heroku.com/" target="_blank"> <img src="https://www.svgrepo.com/show/331424/heroku.svg" alt="git" width="40" height="40"/> </a> 
 
