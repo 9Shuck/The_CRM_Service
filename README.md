@@ -81,7 +81,27 @@ DELETE: {URL} /customer/id <br>
 
 <hr>
 
-### 🎞 Example:
+### 🎞 Example with Insomnia:
+1-Login with the credentials and copy the Bearer Token:<br><br>
+<img height="300" width="400" src="https://imgur.com/VVNlzCP.png"/> <br>
+
+2-Paste the Bearer Token: <br><br>
+<img height="300" width="400" src="https://imgur.com/P61G9o1.png"/>
+
+3-Create a User (All users created aren't admins): <br><br>
+<img height="300" width="400" src="https://imgur.com/0PAEbXX.png"/>
+
+4-Get a List of all Users (Non active users are listed): <br><br>
+<img height="300" width="400" src="https://imgur.com/jBIdPZV.png"/>
+
+5-Modify a User (Can modify each field separetely even change Admin status): <br><br>
+<img height="300" width="400" src="https://imgur.com/mdyZvPY.png"/>
+
+6-Delete a User (Soft Delete):<br><br>
+<img height="300" width="400" src="https://imgur.com/gJRYN6P.png"/>
+
+### Customer endpoints works the same way except that can be managed with non-admin users.
+
 <hr>
 
 ### 🧪 Run Tests:
@@ -118,5 +138,6 @@ OK
 <p align="left"> <a href="https://flask.palletsprojects.com/" target="_blank"> 
 <a href="https://www.python.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> 
 <img src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-icon.svg" alt="flask" width="40" height="40"/> </a>
-<a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> 
+<a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a>
+<a href="https://git-scm.com/" target="_blank"> <img src="https://www.svgrepo.com/show/331424/heroku.svg" alt="git" width="40" height="40"/> </a> 
 
