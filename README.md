@@ -39,9 +39,20 @@ Go inside the directory if you are not in:
 ```
 cd the_crm_service
 ```
+**Install python3.9**    🐍  <br><br>
+**Make sure pip package is installed**<br>
+<br>
+Install environment:
+```
+pipenv install
+```
+Go inside the environment:
+```
+pipenv shell
+```
 Run the app:
 ```
-flask run
+Python3 app.py
 ```
 
 Login with this credentials to access the API:
@@ -110,10 +121,8 @@ Go inside the directory if you are not in:
 ```
 cd the_crm_service
 ```
-Run the flask app:
-```
-flask run
-```
+**Make sure app.py is running** <br>
+<br>
 Run the tests:
 ```
 python3 tests/test_login.py
